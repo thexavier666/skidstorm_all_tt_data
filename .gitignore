@@ -1,3 +1,5 @@
 *.json
 *.swp
 *.tmp
+*.zip
+json_data
