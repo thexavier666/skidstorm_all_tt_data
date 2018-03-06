@@ -2,4 +2,6 @@
 *.swp
 *.tmp
 *.zip
+*.csv
 json_data
+json_stat
