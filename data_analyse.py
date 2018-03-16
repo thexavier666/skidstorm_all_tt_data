@@ -37,9 +37,6 @@ def get_skid_data():
     if os.path.exists(ss_stat_dir) == 0:
         os.makedirs(ss_stat_dir)
 
-    #avg_csv_fp = open(all_avg_file_name,'wb')
-    #avg_wr = csv.writer(avg_csv_fp)
-
     only_avg_list = []
 
     # for each map
@@ -89,15 +86,10 @@ def get_skid_data():
         wr = csv.writer(csv_fp)
         wr.writerows(f_list)
 
-        print only_avg
-
         only_avg_list.append(only_avg)
 
     only_avg_list = do_transpose(only_avg_list)
     write_2dlist_to_csv(only_avg_list,all_avg_file_name)
-
-        # write to a single csv file
-        # avg_wr.writerow(only_avg)
 
 def main():
     get_skid_data()
