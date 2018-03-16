@@ -4,18 +4,10 @@ import os
 import json
 import numpy
 from pprint import pprint
+from misc_functions import do_transpose
 
 def get_avg(some_list):
     return sum(some_list)*1.0/len(some_list)*1.0
-
-def do_transpose(some_2Dlist):
-    y = zip(*some_2Dlist)
-    z = []
-
-    for i in y:
-        z.append(list(i))
-
-    return z
 
 def get_skid_data():
     # The directory which will store all time trail data
@@ -71,7 +63,7 @@ def get_skid_data():
             f_list.append(tmp_l)
 
         # transpoing matrix
-        #f_list = do_transpose(f_list)
+        f_list = do_transpose(f_list)
 
         # write to csv file
         csv_fp = open(full_csv_file_name % (cut_off_val,i[0]), 'wb')

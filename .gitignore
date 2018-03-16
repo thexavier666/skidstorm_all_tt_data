@@ -3,5 +3,6 @@
 *.tmp
 *.zip
 *.csv
+*.pyc
 json_data
 json_stat

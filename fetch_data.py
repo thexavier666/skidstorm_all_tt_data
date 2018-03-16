@@ -5,8 +5,8 @@ import os
 def get_skid_data():
 
     # IP of the skidstorm server which hosts all match details
-    ss_ip = "52.36.89.185"
-    
+    ss_ip = "52.37.195.154"
+
     # The URL via which we can access the time trail data
     ss_json_url = "http://%s/highscores/list/%s/ALL-%s/1-100"
 

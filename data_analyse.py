@@ -4,6 +4,8 @@ import os
 import json
 import numpy
 from pprint import pprint
+from misc_functions import do_transpose
+from misc_functions import write_2dlist_to_csv
 
 def get_avg(some_list):
     return sum(some_list)*1.0/len(some_list)*1.0
@@ -12,8 +14,12 @@ def get_skid_data():
     # The directory which will store all time trail data
     ss_data_dir         = "./json_data"
     ss_stat_dir         = "./json_stat"
+    ss_aggr_dir         = "./aggrgated_data"
+
     json_out_file       = ss_data_dir + "/" + "file_%s_%s.json"
     full_csv_file_name  = ss_stat_dir + "/" + "stat_%s.csv"
+    all_avg_file_name   = ss_aggr_dir + "/" + "all_car_avg.csv"
+
     cut_off_val         = 30
     round_off_val       = 4
 
@@ -25,14 +31,23 @@ def get_skid_data():
     car_csv = list(csv.reader(open(car_id_file, 'r')))
 
     # checking if directory exists or not
+    if os.path.exists(ss_aggr_dir) == 0:
+        os.makedirs(ss_aggr_dir)
+
     if os.path.exists(ss_stat_dir) == 0:
         os.makedirs(ss_stat_dir)
+
+    #avg_csv_fp = open(all_avg_file_name,'wb')
+    #avg_wr = csv.writer(avg_csv_fp)
+
+    only_avg_list = []
 
     # for each map
     for i in map_csv:
         print i[0]
 
         f_list = []
+        only_avg = []
 
         # for each car
         for j in car_csv:
@@ -66,11 +81,23 @@ def get_skid_data():
 
             f_list.append(tmp_l)
 
+            only_avg.append(highscore_avg)
+
         # write to csv file
 
         csv_fp = open(full_csv_file_name % i[0], 'wb')
         wr = csv.writer(csv_fp)
         wr.writerows(f_list)
+
+        print only_avg
+
+        only_avg_list.append(only_avg)
+
+    only_avg_list = do_transpose(only_avg_list)
+    write_2dlist_to_csv(only_avg_list,all_avg_file_name)
+
+        # write to a single csv file
+        # avg_wr.writerow(only_avg)
 
 def main():
     get_skid_data()
