@@ -5,4 +5,4 @@
 *.csv
 *.pyc
 json_data
-json_stat
+json_stat*

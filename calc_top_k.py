@@ -1,3 +1,4 @@
+import sys
 import csv
 import urllib
 import os
@@ -11,7 +12,7 @@ def get_avg(some_list):
 
 def get_skid_data():
     # The directory which will store all time trail data
-    cut_off_val         = 50
+    cut_off_val         = int(sys.argv[1])
     round_off_val       = 4
 
     ss_data_dir         = "./json_data"
