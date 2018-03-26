@@ -14,7 +14,7 @@ def get_skid_data():
     # The directory which will store all time trail data
     ss_data_dir         = "./json_data"
     ss_stat_dir         = "./json_stat"
-    ss_aggr_dir         = "./aggrgated_data"
+    ss_aggr_dir         = "./aggregated_data"
 
     json_out_file       = ss_data_dir + "/" + "file_%s_%s.json"
     full_csv_file_name  = ss_stat_dir + "/" + "stat_%s.csv"
