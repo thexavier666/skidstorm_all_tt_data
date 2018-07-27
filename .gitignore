@@ -2,8 +2,8 @@
 *.swp
 *.tmp
 *.zip
-*.csv
 *.pyc
-json_data
-json_stat*
-world_record_data
+json_data/*
+json_stat/*
+aggregated_data/*
+world_record_data/*
