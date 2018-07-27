@@ -1,10 +1,10 @@
 ### Collecting the data
 
-`json_collect_data.py` - Fetches all the data from the Skidstorm site per car per map
+`fetch_data.py` - Fetches all the data from the Skidstorm site per car per map
 
 To run:
 ```
-python json_collect_data
+python fetch_data
 ```
 All output is in `json_data` directory. This needs to be executing before any other command.
 
