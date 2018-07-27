@@ -20,7 +20,10 @@ def get_skid_data():
     full_csv_file_name  = ss_stat_dir + "/" + "stat_%s.csv"
     all_avg_file_name   = ss_aggr_dir + "/" + "all_car_avg.csv"
 
-    cut_off_val         = 15
+    # taking scores of top few players
+    cut_off_val         = 20
+
+    # rounding off the results
     round_off_val       = 4
 
     # Files which contain the map and car name
