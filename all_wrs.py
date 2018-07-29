@@ -14,12 +14,18 @@ def get_skid_data():
     # The directory which will store all time trail data
     ss_data_dir         = "json_data/"
 
+    # directory to store all world record data
     ss_wr_dir           = "world_record_data/"
 
-    json_out_file       = ss_data_dir + "file_%s_%s.json"
+    # checking if directory exists or not
+    if os.path.exists(ss_wr_dir) == 0:
+        os.makedirs(ss_wr_dir)
 
     # static file directory
     static_dir = "static_data/"
+
+    # rounding off the results
+    round_off_val       = 4
 
     # Files which contain the map and car name
     map_id_file = static_dir + "map_name.csv"
@@ -48,18 +54,29 @@ def get_skid_data():
 
             # fetching only TT highscore, ie, total map time
             for k in json_dic["scores"]:
-                top_one = k["clanName"], k["username"],  k["highscore"]
-                print "\t\t", 
-                print top_one[0],
-                print " | ",
-                print top_one[1], 
-                print " | ",
-                print top_one[2]
+
+                # fetching data
+                clan_name = k["clanName"]
+                user_name = k["username"]
+                map_time = float(k["highscore"])
+
+                # rounding off
+                map_time = str(round(map_time, round_off_val))
+
+                # some players don't have a clan name
+                if clan_name == None:
+                    clan_name = "NO_CLAN"
+
+                top_one = [clan_name, user_name, map_time]
 
                 per_car_tmp.append(top_one)
+                # just fetching the top entry and breaking
+                # better method is possible. This is just a hack
                 break
 
-        #write_2dlist_to_csv(per_car_tmp, ss_wr_dir + "wr_%s" % i[0])
+        # writing to csv
+        wr_file_name = ss_wr_dir + "wr_%s" % i[0] + ".csv"
+        write_2dlist_to_csv(per_car_tmp, wr_file_name)
             
 
 def main():
