@@ -16,7 +16,23 @@ To run:
 python data_analyse
 ```
 
-All output is in `aggregated_data` directory which contains only the average of all cars in each map. The average and standard deviation is in `json_stat` directory. 
+All output is in `aggregated_data` directory which contains only the average of all cars in each map. The average and standard deviation is in `json_stat` directory.
+
+### Finding all car world records
+
+1. Get only the world record data from `json` files
+
+```
+python all_wrs.py
+```
+
+2. Combine all the `csv` files
+
+```
+python combine_wr_csv.py
+```
+
+In the output file named `skidstorm_all_car_wr.csv`, each row is the world record for each car. Every 3 column is for each map. The three columns for every map contains (player clan, player name, best time). Some players have no clan, they are termed as `NO_CLAN`
 
 ### Finding score of top k players
 
