@@ -1,3 +1,7 @@
+# About
+
+This is a collection of code to get the top time trial scores of the game Skidstorm. To run the code, please follow tutorial below. You need to have `Python 2.7` installed.
+
 ### Collecting the data
 
 `fetch_data.py` - Fetches all the data from the Skidstorm site per car per map
